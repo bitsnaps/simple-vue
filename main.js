@@ -93,9 +93,9 @@
     <h4>Available Color:</h4>
     <ul>
     <div v-for="(variant,index) in variants"
-    :key="variant.variantId"
-    class="color-box"
-    :style="{backgroundColor: variant.variantColor}"
+      :key="variant.variantId"
+      class="color-box"
+      :style="{backgroundColor: variant.variantColor}"
       @mouseover="updateProduct(index)">
     </div>
     </ul>
@@ -105,7 +105,7 @@
     </ul>
     <br />
 
-    <button v-on:click="addCart" :disabled="!inStock" :class="{disabledButton: !inStock}">Add to Cart</button>
+    <button v-on:click="addToCart" :disabled="!inStock" :class="{ disabledButton: !inStock }">Add to Cart</button>
 
     <button v-on:click="removeCart">Remove Cart</button>
 
@@ -139,39 +139,38 @@
           }
         },
         methods: {
-          addCart: function (){
+          addToCart: function() {
             this.$emit('add-to-cart', this.variants[this.selectedVariant].variantId)
           },
-          removeCart: function(){
+          removeCart: function() {
             this.$emit('remove-from-cart')
           },
-          updateProduct: function (index){
+          updateProduct: function(index) {
             this.selectedVariant = index
-            //this.image = this.selectedVariant
           }
         }, //methods
         computed: {
-          title: function(){
+          title: function() {
             return this.brand +' ' + this.product
           },
-          image: function(){
+          image: function() {
             return this.variants[this.selectedVariant].variantImage
           },
-          inStock: function(){
+          inStock: function() {
             return this.variants[this.selectedVariant].variantQuantity
           },
-          shipping: function(){
+          shipping: function() {
             if (this.premium){
               return "Free"
             }
             return 2.99
           }
         }, //computed
-        mounted(){
+        mounted() {
           eventBus.$on('review-submitted', productReview => {
             this.reviews.push(productReview)
           })
-        }
+        } // mounted()
       })
 
 

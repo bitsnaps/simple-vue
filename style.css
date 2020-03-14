@@ -1,0 +1,12 @@
+  .color-box {
+    width: 35px;
+    height: 35px;
+    border: 0;
+    margin: 2px;
+  }
+  .disabledButton {
+    background-color: #d8d8d8;
+  }
+  .out-of-stock {
+    text-decoration: line-through;
+  }
